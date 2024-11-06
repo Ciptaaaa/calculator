@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kalkulator dengan History dan Animasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center h-screen">
+    <!-- Kontainer untuk Kalkulator dan History -->
+    <div
+      class="flex flex-col sm:flex-row w-full max-w-5xl space-y-6 sm:space-x-6 justify-center items-center px-4 sm:px-0 h-full"
+    >
+      <!-- Kalkulator -->
+      <div
+        class="bg-white p-6 rounded-lg shadow-lg sm:w-1/2 w-full animate__animated animate__fadeIn animate__delay-1s"
+      >
+        <input
+          id="display"
+          type="text"
+          disabled
+          class="w-full bg-gray-100 text-right p-4 text-xl rounded-lg mb-4"
+          value="0"
+        />
+        <div class="grid grid-cols-4 gap-2 justify-end">
+          <!-- Tombol Kalkulator -->
+          <button
+            class="bg-transparent p-4 rounded-lg text-white text-xl cursor-default"
+          ></button>
+          <button
+            class="bg-transparent p-4 rounded-lg text-white text-xl cursor-default"
+          ></button>
+          <button
+            class="bg-orange-500 p-4 rounded-lg text-white text-xl"
+            onclick="clearDisplay()"
+          >
+            C
+          </button>
+          <button
+            class="bg-orange-500 p-4 rounded-lg text-white text-xl"
+            onclick="deleteLastChar()"
+          >
+            ←
+          </button>
+
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('7')"
+          >
+            7
+          </button>
+
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('8')"
+          >
+            8
+          </button>
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('9')"
+          >
+            9
+          </button>
+
+          <button
+            class="bg-orange-500 p-4 rounded-lg text-white text-xl"
+            onclick="appendOperator('/')"
+          >
+            /
+          </button>
+
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('4')"
+          >
+            4
+          </button>
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('5')"
+          >
+            5
+          </button>
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('6')"
+          >
+            6
+          </button>
+          <button
+            class="bg-orange-500 p-4 rounded-lg text-white text-xl"
+            onclick="appendOperator('x')"
+          >
+            x
+          </button>
+
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('1')"
+          >
+            1
+          </button>
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('2')"
+          >
+            2
+          </button>
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('3')"
+          >
+            3
+          </button>
+          <button
+            class="bg-orange-500 p-4 rounded-lg text-white text-xl"
+            onclick="appendOperator('-')"
+          >
+            -
+          </button>
+
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="toggleSign()"
+          >
+            ±
+          </button>
+
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('0')"
+          >
+            0
+          </button>
+          <button
+            class="bg-gray-200 p-4 rounded-lg text-xl hover:bg-gray-300 transition duration-200"
+            onclick="appendToDisplay('.')"
+          >
+            ,
+          </button>
+          <button
+            class="bg-orange-500 p-4 rounded-lg text-white text-xl"
+            onclick="appendOperator('+')"
+          >
+            +
+          </button>
+        </div>
+
+        <div class="flex w-full mt-3">
+          <button
+            class="bg-sky-500 p-4 rounded-lg text-white text-xl flex-grow"
+            onclick="calculatE()"
+          >
+            =
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar History -->
+      <div
+        class="bg-white p-4 rounded-lg shadow-lg sm:w-1/2 w-full sm:h-auto h-[80vh] max-h-[80vh] overflow-y-auto animate__animated animate__fadeIn animate__delay-1s"
+      >
+        <h3 class="font-semibold text-xl mb-4">History</h3>
+        <ul
+          id="history-log"
+          class="list-disc pl-5 text-sm text-gray-700 sm:h-auto max-h-[70vh] overflow-y-auto"
+        ></ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
